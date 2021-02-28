@@ -5,7 +5,6 @@ import java.util.Map;
 /**
  * @author zhengguangchen
  */
-
 public class ServiceMeta {
     private String serviceName;
     private String serviceAddress;
