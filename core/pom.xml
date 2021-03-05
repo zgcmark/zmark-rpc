@@ -18,6 +18,14 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.zmark</groupId>
+            <artifactId>register</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zmark</groupId>
+            <artifactId>remoting</artifactId>
+        </dependency>
+        <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
         </dependency>

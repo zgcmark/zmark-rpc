@@ -1,5 +1,6 @@
 package com.zmark.remoting.provider.netty.handler;
 
+import com.zmark.remoting.provider.netty.RequestPool;
 import com.zmark.remoting.provider.netty.protocol.ZmarkProtocol;
 import com.zmark.remoting.provider.netty.protocol.ZmarkRpcRequest;
 import io.netty.channel.ChannelHandlerContext;
@@ -22,6 +23,9 @@ public class RpcRequestHandler extends SimpleChannelInboundHandler<ZmarkProtocol
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, ZmarkProtocol<ZmarkRpcRequest> request) throws Exception {
         //TODO 处理接受到的信息
+        RequestPool.submit(() -> {
+
+        });
 
     }
 }

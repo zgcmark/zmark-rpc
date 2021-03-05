@@ -1,4 +1,4 @@
-package com.zmark.remoting.provider.netty.handler;
+package com.zmark.remoting.provider.netty.codec;
 
 import com.zmark.core.helper.JsonHelper;
 import com.zmark.remoting.provider.netty.enums.MsgTypeEnum;

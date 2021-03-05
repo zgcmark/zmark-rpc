@@ -15,4 +15,6 @@ import java.lang.annotation.Target;
 @Autowired
 public @interface ZmarkRpcReference {
     long timeout() default 1000;
+
+    String registryAddr() default "127.0.0.1";
 }
