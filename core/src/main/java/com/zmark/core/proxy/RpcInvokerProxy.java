@@ -5,15 +5,13 @@ import com.zmark.core.RpcRequestHolder;
 import com.zmark.register.api.RegisterService;
 import com.zmark.remoting.consumer.ZmarkRpcConsumer;
 import com.zmark.remoting.provider.netty.enums.MsgTypeEnum;
-import com.zmark.remoting.provider.netty.protocol.ZmarkProtocol;
-import com.zmark.remoting.provider.netty.protocol.ZmarkProtocolHeader;
-import com.zmark.remoting.provider.netty.protocol.ZmarkProtocolType;
-import com.zmark.remoting.provider.netty.protocol.ZmarkRpcRequest;
+import com.zmark.remoting.provider.netty.protocol.*;
 import io.netty.channel.DefaultEventLoop;
 import io.netty.util.concurrent.DefaultPromise;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author zhengguangchen
@@ -52,7 +50,8 @@ public class RpcInvokerProxy implements InvocationHandler {
 
         //发起远程
         ZmarkRpcConsumer zmarkRpcConsumer = new ZmarkRpcConsumer();
-        RpcFuture future = new RpcFuture(new DefaultPromise(new DefaultEventLoop()), timeout);
-        return null;
+        RpcFuture<ZmarkRpcResponse> future = new RpcFuture(new DefaultPromise(new DefaultEventLoop()), timeout);
+        zmarkRpcConsumer.request(protocol, registerService);
+        return future.getPromise().get(future.getTimeout(), TimeUnit.MILLISECONDS).getBodyObject();
     }
 }
